@@ -23,7 +23,7 @@ allprojects {
 在需要用到這個庫的module中的build.gradle中的dependencies中加入
 ```
 dependencies {
-implementation 'com.github.sam38124:JzSqlHelper:v1.0'
+implementation 'com.github.sam38124:JzSqlHelper:2.0'
 }
 ```
 <a name="Use"></a>
