@@ -3,8 +3,8 @@ package com.orange.jzsqlhelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.orange.jzsqlhelper.mmySql.ItemDAO
-import com.orange.jzsqlhelper.mmySql.Sql_Result
+import com.orange.lib.mmySql.ItemDAO
+import com.orange.lib.mmySql.Sql_Result
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
                 ");\n")
         //第三部使用Query進行資料庫查詢
         item.Query("select * from logtable", Sql_Result {
+            val result1=it.getString(0)
+            val result2=it.getString(1)
+            val result3=it.getString(2)
             Log.e("sqlresult",it.getString(0))
         });
     }
