@@ -1,4 +1,4 @@
-package com.orange.lib.mmySql;
+package com.jzsql.lib.mmySql;
 
 import android.database.Cursor;
 

@@ -1,4 +1,4 @@
-package com.orange.lib.mmySql;
+package com.jzsql.lib.mmySql;
 import android.app.Activity
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log

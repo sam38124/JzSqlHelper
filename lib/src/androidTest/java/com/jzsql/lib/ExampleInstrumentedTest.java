@@ -1,4 +1,4 @@
-package com.orange.lib;
+package com.jzsql.lib;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

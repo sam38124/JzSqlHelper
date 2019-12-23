@@ -1,10 +1,10 @@
-package com.orange.jzsqlhelper
+package com.jzsql.jzsqlhelper
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.orange.lib.mmySql.ItemDAO
-import com.orange.lib.mmySql.Sql_Result
+import com.jzsql.lib.mmySql.ItemDAO
+import com.jzsql.lib.mmySql.Sql_Result
 
 class MainActivity : AppCompatActivity() {
 
