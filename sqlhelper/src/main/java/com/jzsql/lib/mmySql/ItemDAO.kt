@@ -1,9 +1,10 @@
 package com.jzsql.lib.mmySql;
 import android.app.Activity
+import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 
-class ItemDAO(context: Activity,DB_NAME:String) {
+class ItemDAO(context: Context,DB_NAME:String) {
     companion object {
         val TAG = "ItemDAO"
     }
