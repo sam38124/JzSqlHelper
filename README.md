@@ -11,7 +11,7 @@
 
 #### jcenter導入方式
 在app專案包的build.gradle中添加
-```
+```kotlin
 allprojects {
 		repositories {
 			...
@@ -21,7 +21,7 @@ allprojects {
 ```
 
 在需要用到這個庫的module中的build.gradle中的dependencies中加入
-```
+```kotlin
 dependencies {
 implementation 'com.github.sam38124:JzSqlHelper:4.0'
 }
