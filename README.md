@@ -1,6 +1,6 @@
 # JzSqlHelper
 這是一套極致輕量化的sqlite管理器，使用最少的代碼進行和Database的交互！！
-## 目录
+## 目錄
 * [如何導入到專案](#Import)
 * [如何使用](#Use)
 * [關於我](#About)
