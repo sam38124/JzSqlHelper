@@ -31,11 +31,11 @@ implementation 'com.github.sam38124:JzSqlHelper:4.0'
 
 第一步創建資料庫
 
-```
+```kotlin
 val item= ItemDAO(this,"test.db")
 ```
 第二步開始使用
-```
+```kotlin
 # 使用ExSql執行資料庫語法
 
 
