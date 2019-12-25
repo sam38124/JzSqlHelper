@@ -60,7 +60,7 @@ val item= ItemDAO(this,"test.db")
 ```
 <a name="About"></a>
 ### 關於我
-現任橙的電子全端app開發工程師
+橙的電子android and ios developer
 
 *line:sam38124
 
