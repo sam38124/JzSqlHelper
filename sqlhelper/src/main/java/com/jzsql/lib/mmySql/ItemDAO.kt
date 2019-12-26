@@ -26,7 +26,7 @@ class ItemDAO(context: Context,DB_NAME:String) {
     }
 fun DropTb(tb:String){
     try{
-        db.execSQL("drop table  `logtable`")
+        db.execSQL("drop table  `$tb`")
     }catch (e:Exception){
         Log.e("SQLERROR:",e.message)
     }
