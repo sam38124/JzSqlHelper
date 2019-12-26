@@ -1,6 +1,6 @@
 # JzSqlHelper
 這是一套極致輕量化的sqlite管理器，使用最少的代碼進行和Database的交互！！
-## 目录
+## 目錄
 * [如何導入到專案](#Import)
 * [如何使用](#Use)
 * [關於我](#About)
@@ -11,7 +11,7 @@
 
 #### jcenter導入方式
 在app專案包的build.gradle中添加
-```
+```kotlin
 allprojects {
 		repositories {
 			...
@@ -21,9 +21,9 @@ allprojects {
 ```
 
 在需要用到這個庫的module中的build.gradle中的dependencies中加入
-```
+```kotlin
 dependencies {
-implementation 'com.github.sam38124:JzSqlHelper:3.0'
+implementation 'com.github.sam38124:JzSqlHelper:4.0'
 }
 ```
 <a name="Use"></a>
@@ -31,11 +31,11 @@ implementation 'com.github.sam38124:JzSqlHelper:3.0'
 
 第一步創建資料庫
 
-```
+```kotlin
 val item= ItemDAO(this,"test.db")
 ```
 第二步開始使用
-```
+```kotlin
 # 使用ExSql執行資料庫語法
 
 
@@ -60,7 +60,7 @@ val item= ItemDAO(this,"test.db")
 ```
 <a name="About"></a>
 ### 關於我
-現任橙的電子全端app開發工程師
+橙的電子android and ios developer
 
 *line:sam38124
 
