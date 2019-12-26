@@ -56,7 +56,8 @@ val item= ItemDAO(this,"test.db")
             val result3=it.getString(2)
 
         })
-
+# 使用DropTb刪除資料表
+   item.DropTb("Table")
 ```
 <a name="About"></a>
 ### 關於我
