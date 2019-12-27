@@ -116,7 +116,6 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     }
 
     fun Query(sql: String, caller: Sql_Result) {
-        Thread {
             val result = db.rawQuery(
                 sql, null
             )
@@ -131,7 +130,6 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             } else {
                 result.close()
             }
-        }.start()
     }
 
     // 關閉資料庫，一般的應用都不需要修改
