@@ -1,3 +1,6 @@
+[![](https://jitpack.io/v/sam38124/JzFrameWork.svg)](https://jitpack.io/#sam38124/JzFrameWork)
+[![Platform](https://img.shields.io/badge/平台-%20Android%20-brightgreen.svg)](https://github.com/sam38124)
+[![characteristic](https://img.shields.io/badge/特點-%20輕量級%20%7C%20簡單易用%20%20%7C%20穩定%20-brightgreen.svg)](https://github.com/sam38124)
 # JzSqlHelper
 這是一套極致輕量化的sqlite管理器，使用最少的代碼進行和Database的交互！！
 ## 目錄
