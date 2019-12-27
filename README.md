@@ -89,7 +89,7 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
 
   item.init_ByUrl( "https://sampleurl/sample.db",InitCaller {
                if (it) {
-               Log.e("error", "預載資料庫成功")
+               Log.e(Tag, "預載資料庫成功")
   item.create().Query("select count(1) from `Summary table`", Sql_Result { result ->
                var data = result.getString(0)
                handler.post {
@@ -97,7 +97,7 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
                         }
                     })
                 } else {
-                    Log.e("error", "預載資料庫失敗")
+                    Log.e(Tag, "預載資料庫失敗")
                 }
             })
 ```
