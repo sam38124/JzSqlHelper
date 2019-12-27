@@ -89,15 +89,15 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
 
   item.init_ByUrl( "https://sampleurl/sample.db",InitCaller {
                if (it) {
-               Log.e("預載", "success")
-  item.create().Query("select count(1) from `Summary table`", Sql_Result { it ->
-               var result = it.getString(0)
+               Log.e("error", "預載資料庫成功")
+  item.create().Query("select count(1) from `Summary table`", Sql_Result { result ->
+               var data = result.getString(0)
                handler.post {
-               findViewById<TextView>(R.id.text).text = result
+               findViewById<TextView>(R.id.text).text = data
                         }
                     })
                 } else {
-                    Log.e("預載", "false")
+                    Log.e("error", "預載資料庫失敗")
                 }
             })
 ```
