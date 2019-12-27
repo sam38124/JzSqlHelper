@@ -3,6 +3,8 @@
 ## 目錄
 * [如何導入到專案](#Import)
 * [快速使用](#Use)
+* [預載Assets資料庫](#Assetsdb)
+* [預載網路資料庫](#Urldb)
 * [關於我](#About)
 
 <a name="Import"></a>
@@ -64,6 +66,39 @@ implementation 'com.github.sam38124:JzSqlHelper:5.0'
        //關閉資料庫
        item.close()
 ```
+<a name="Assetsdb"></a>
+### 預載Assets資料庫
+```kotlin
+ val item = ItemDAO(this, "test.db")
+
+        item.init_ByAsset("test.db", InitCaller {
+        if (it) {
+        item.create().Query("select count(1) from `Summary table`", Sql_Result { it ->
+                    val result1 = it.getString(0)
+                })
+            }
+        })
+```
+<a name="Urldb"></a>
+### 預載網路資料庫
+```kotlin
+ val item = ItemDAO(this, "gg.db")
+
+  item.init_ByUrl( "https://sampleurl/sample.db",InitCaller {
+               if (it) {
+               Log.e("預載", "success")
+  item.create().Query("select count(1) from `Summary table`", Sql_Result { it ->
+               var result = it.getString(0)
+               handler.post {
+               findViewById<TextView>(R.id.text).text = result
+                        }
+                    })
+                } else {
+                    Log.e("預載", "false")
+                }
+            })
+```
+
 <a name="About"></a>
 ### 關於我
 橙的電子android and ios developer
