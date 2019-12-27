@@ -76,8 +76,8 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
 
         item.init_ByAsset("test.db", InitCaller {
         if (it) {
-        item.create().Query("select count(1) from `Summary table`", Sql_Result { it ->
-                    val result1 = it.getString(0)
+        item.create().Query("select count(1) from `Summary table`", Sql_Result { result ->
+                    val data = result.getString(0)
                 })
             }
         })
