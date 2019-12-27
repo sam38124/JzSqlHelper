@@ -23,7 +23,7 @@ allprojects {
 在需要用到這個庫的module中的build.gradle中的dependencies中加入
 ```kotlin
 dependencies {
-implementation 'com.github.sam38124:JzSqlHelper:4.0'
+implementation 'com.github.sam38124:JzSqlHelper:5.0'
 }
 ```
 <a name="Use"></a>
@@ -56,7 +56,8 @@ val item= ItemDAO(this,"test.db")
             val result3=it.getString(2)
 
         })
-
+# 使用DropTb刪除資料表
+   item.DropTb("Table")
 ```
 <a name="About"></a>
 ### 關於我
