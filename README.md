@@ -25,7 +25,7 @@ allprojects {
 在需要用到這個庫的module中的build.gradle中的dependencies中加入
 ```kotlin
 dependencies {
-implementation 'com.github.sam38124:JzSqlHelper:5.0'
+implementation 'com.github.sam38124:JzSqlHelper:5.1'
 }
 ```
 <a name="Use"></a>
