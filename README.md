@@ -28,7 +28,7 @@ allprojects {
 在需要用到這個庫的module中的build.gradle中的dependencies中加入
 ```kotlin
 dependencies {
-implementation 'com.github.sam38124:JzSqlHelper:5.1'
+implementation 'com.github.sam38124:JzSqlHelper:5.3'
 }
 ```
 <a name="Use"></a>
@@ -76,8 +76,8 @@ implementation 'com.github.sam38124:JzSqlHelper:5.1'
 
         item.init_ByAsset("test.db", InitCaller {
         if (it) {
-        item.create().Query("select count(1) from `Summary table`", Sql_Result { it ->
-                    val result1 = it.getString(0)
+        item.create().Query("select count(1) from `Summary table`", Sql_Result { result ->
+                    val data = result.getString(0)
                 })
             }
         })
@@ -89,15 +89,15 @@ implementation 'com.github.sam38124:JzSqlHelper:5.1'
 
   item.init_ByUrl( "https://sampleurl/sample.db",InitCaller {
                if (it) {
-               Log.e("預載", "success")
-  item.create().Query("select count(1) from `Summary table`", Sql_Result { it ->
-               var result = it.getString(0)
+               Log.e(Tag, "預載資料庫成功")
+  item.create().Query("select count(1) from `Summary table`", Sql_Result { result ->
+               var data = result.getString(0)
                handler.post {
-               findViewById<TextView>(R.id.text).text = result
+               findViewById<TextView>(R.id.text).text = data
                         }
                     })
                 } else {
-                    Log.e("預載", "false")
+                    Log.e(Tag, "預載資料庫失敗")
                 }
             })
 ```
