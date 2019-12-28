@@ -41,10 +41,10 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
 ```
 第二步開始使用
 ```kotlin
-# ExSql執行資料庫語法，Query查詢資料
+# exsql執行資料庫語法，Query查詢資料
 
         //創建資料表
-        item.ExSql(
+        item.exsql(
             "CREATE TABLE   IF NOT EXISTS logtable (\n" +
                     "    id   INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                     "    data VARCHAR NOT NULL,\n" +
@@ -53,10 +53,10 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
         )
 
         //插入資料
-        item.ExSql("insert into logtable(data,type) values ('hello sql','sql')")
+        item.exsql("insert into logtable(data,type) values ('hello sql','sql')")
 
         //資料查詢
-        item.Query("select * from logtable", Sql_Result {
+        item.query("select * from logtable", Sql_Result {
             //Callback回調，會迴圈跑到所有資料載入完
             val result1 = it.getString(0)
             val result2 = it.getString(1)
@@ -64,7 +64,7 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
         });
 
        //刪除資料表
-       item.DropTb("Table")
+       item.droptb("Table")
 
        //關閉資料庫
        item.close()
@@ -76,7 +76,7 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
 
         item.init_ByAsset("test.db", InitCaller {
         if (it) {
-        item.create().Query("select count(1) from `Summary table`", Sql_Result { result ->
+        item.create().query("select count(1) from `Summary table`", Sql_Result { result ->
                     val data = result.getString(0)
                 })
             }
@@ -90,7 +90,7 @@ implementation 'com.github.sam38124:JzSqlHelper:5.3'
   item.init_ByUrl( "https://sampleurl/sample.db",InitCaller {
                if (it) {
                Log.e(Tag, "預載資料庫成功")
-  item.create().Query("select count(1) from `Summary table`", Sql_Result { result ->
+  item.create().query("select count(1) from `Summary table`", Sql_Result { result ->
                var data = result.getString(0)
                handler.post {
                findViewById<TextView>(R.id.text).text = data
