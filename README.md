@@ -41,7 +41,7 @@ implementation 'com.github.sam38124:JzSqlHelper:5.4'
 ```
 第二步開始使用
 ```kotlin
-# exsql執行資料庫語法，Query查詢資料
+# exsql執行資料庫語法，query查詢資料
 
         //創建資料表
         item.exsql(
