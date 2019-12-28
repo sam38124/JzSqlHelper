@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         //第一步創建資料庫
         val item = ItemDAO(this, "test.db").create()
         //第二步創建資料表
-        item.ExSql(
+        item.exsql(
             "CREATE TABLE   IF NOT EXISTS logtable (\n" +
                     "    id   INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                     "    data VARCHAR NOT NULL,\n" +
@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
                     ");\n"
         )
         //第三部插入資料
-        item.ExSql("insert into logtable(data,type) values ('hello sql','sql')")
+        item.exsql("insert into logtable(data,type) values ('hello sql','sql')")
         //第四部資料查詢
-        item.Query("select * from logtable", Sql_Result {
+        item.query("select * from logtable", Sql_Result {
             //Callback回調，會迴圈跑到所有資料載入完
             val result1 = it.getString(0)
             val result2 = it.getString(1)

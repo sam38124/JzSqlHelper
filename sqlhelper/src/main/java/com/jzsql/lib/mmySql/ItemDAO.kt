@@ -27,7 +27,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         return this
     }
 
-    fun DeleteDb(): Boolean {
+    fun deletedb(): Boolean {
         try {
             val DB_PATH = context.getDatabasePath(DB_NAME)
             return if (DB_PATH.exists()) {
@@ -45,7 +45,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         Thread {
             try {
                 val input = URL(url).openStream()
-                Dbinit(caller, input)
+                dbinit(caller, input)
             } catch (e: Exception) {
                 e.printStackTrace()
                 handle.post { caller.Result(false) }
@@ -57,7 +57,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         Thread {
             try {
                 val input = context.assets.open(filename)
-                Dbinit(caller, input)
+                dbinit(caller, input)
             } catch (e: Exception) {
                 e.printStackTrace()
                 handle.post { caller.Result(false) }
@@ -65,7 +65,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         }.start()
     }
 
-    fun Dbinit(caller: InitCaller, stream: InputStream) {
+    fun dbinit(caller: InitCaller, stream: InputStream) {
         try {
             val DB_PATH = context.getDatabasePath(DB_NAME)
             val file = File(DB_PATH.path.replace(DB_NAME, ""))
@@ -99,7 +99,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         }
     }
 
-    fun ExSql(SQL: String) {
+    fun exsql(SQL: String) {
         try {
             db.execSQL(SQL);
         } catch (E: Exception) {
@@ -107,7 +107,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         }
     }
 
-    fun DropTb(tb: String) {
+    fun dropTb(tb: String) {
         try {
             db.execSQL("drop table  `$tb`")
         } catch (e: Exception) {
@@ -115,7 +115,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         }
     }
 
-    fun Query(sql: String, caller: Sql_Result) {
+    fun query(sql: String, caller: Sql_Result) {
             val result = db.rawQuery(
                 sql, null
             )
