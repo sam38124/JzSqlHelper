@@ -40,7 +40,20 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             return false
         }
     }
-
+    fun init_ByUrl(url: String):Boolean{
+        try {
+            val input = URL(url).openStream()
+            return dbinit(input)
+        }catch (e:java.lang.Exception){e.printStackTrace()
+        return false}
+    }
+    fun init_ByAsset(filename: String):Boolean{
+        try {
+            val input = context.assets.open(filename)
+            return dbinit(input)
+        }catch (e:java.lang.Exception){e.printStackTrace()
+            return false}
+    }
     fun init_ByUrl(url: String, caller: InitCaller) {
         Thread {
             try {
@@ -96,6 +109,39 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         } catch (e: Exception) {
             e.printStackTrace()
             handle.post { caller.Result(false) }
+        }
+    }
+    fun dbinit(stream: InputStream):Boolean {
+        try {
+            val DB_PATH = context.getDatabasePath(DB_NAME)
+            val file = File(DB_PATH.path.replace(DB_NAME, ""))
+            if (!file.exists()) {
+                if (!file.mkdirs()) {
+                    return false
+                }
+            }
+            val fos = FileOutputStream(DB_PATH.path)
+            val bufferSize = 8192
+            val buf = ByteArray(bufferSize)
+            while (true) {
+                val read = stream.read(buf)
+                if (read == -1) {
+                    break
+                }
+                fos.write(buf, 0, read)
+            }
+            stream.close()
+            fos.close()
+            val f = File(DB_PATH.path)
+            if (f.exists() && f.isFile()) {
+                Log.d("path", "" + f.length())
+            } else {
+                Log.d("path", "file doesn't exist or is not a file")
+            }
+            return f.length() != 0L
+        } catch (e: Exception) {
+            e.printStackTrace()
+          return  false
         }
     }
 
