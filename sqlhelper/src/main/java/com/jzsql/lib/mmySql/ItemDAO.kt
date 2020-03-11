@@ -15,7 +15,6 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
         val TAG = "ItemDAO"
 
     }
-
     var handle = Handler()
     //資料庫物件
     lateinit var dbHelper: DatabaseHelper
@@ -113,6 +112,8 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     }
     fun dbinit(stream: InputStream):Boolean {
         try {
+            create()
+            close()
             val DB_PATH = context.getDatabasePath(DB_NAME)
             val file = File(DB_PATH.path.replace(DB_NAME, ""))
             if (!file.exists()) {
@@ -138,6 +139,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             } else {
                 Log.d("path", "file doesn't exist or is not a file")
             }
+            create()
             return f.length() != 0L
         } catch (e: Exception) {
             e.printStackTrace()
