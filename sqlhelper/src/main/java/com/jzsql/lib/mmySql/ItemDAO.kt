@@ -80,6 +80,9 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     fun dbinit(caller: InitCaller, stream: InputStream) {
         try {
             val DB_PATH = context.getDatabasePath(DB_NAME)
+            if(DB_PATH.exists()){
+                DB_PATH.delete()
+            }
             val file = File(DB_PATH.path.replace(DB_NAME, ""))
             if (!file.exists()) {
                 if (!file.mkdirs()) {
