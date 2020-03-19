@@ -37,7 +37,7 @@ implementation 'com.github.sam38124:JzSqlHelper:6.3'
 第一步創建資料庫
 
 ```kotlin
- val item= ItemDAO(this,"test.db").create()
+ val item= ItemDAO(this,"test.db")
 ```
 第二步開始使用
 ```kotlin
@@ -76,7 +76,7 @@ implementation 'com.github.sam38124:JzSqlHelper:6.3'
 
         item.init_ByAsset("test.db", InitCaller {
         if (it) {
-        item.create().query("select count(1) from `Summary table`", Sql_Result { result ->
+        item.query("select count(1) from `Summary table`", Sql_Result { result ->
                     val data = result.getString(0)
                 })
             }
@@ -90,7 +90,7 @@ implementation 'com.github.sam38124:JzSqlHelper:6.3'
   item.init_ByUrl( "https://sampleurl/sample.db",InitCaller {
                if (it) {
                Log.e(Tag, "預載資料庫成功")
-  item.create().query("select count(1) from `Summary table`", Sql_Result { result ->
+  item.query("select count(1) from `Summary table`", Sql_Result { result ->
                var data = result.getString(0)
                handler.post {
                findViewById<TextView>(R.id.text).text = data
