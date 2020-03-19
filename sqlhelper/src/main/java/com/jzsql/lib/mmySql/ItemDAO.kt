@@ -115,9 +115,10 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     }
     fun dbinit(stream: InputStream):Boolean {
         try {
-            create()
-            close()
             val DB_PATH = context.getDatabasePath(DB_NAME)
+            if(DB_PATH.exists()){
+                DB_PATH.delete()
+            }
             val file = File(DB_PATH.path.replace(DB_NAME, ""))
             if (!file.exists()) {
                 if (!file.mkdirs()) {
@@ -142,7 +143,6 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             } else {
                 Log.d("path", "file doesn't exist or is not a file")
             }
-            create()
             return f.length() != 0L
         } catch (e: Exception) {
             e.printStackTrace()
