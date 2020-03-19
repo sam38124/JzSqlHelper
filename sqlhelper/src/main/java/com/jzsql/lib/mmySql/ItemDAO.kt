@@ -82,7 +82,10 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
 
     fun dbinit(caller: InitCaller, stream: InputStream) {
         try {
-            close()
+            var colsesucess=false
+            handle.post {close()
+                colsesucess=true}
+            while (!colsesucess){}
             val DB_PATH = context.getDatabasePath(DB_NAME)
             if(DB_PATH.exists()){
                 DB_PATH.delete()
@@ -111,8 +114,9 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             } else {
                 Log.d("path", "file doesn't exist or is not a file")
             }
-            create()
-            handle.post { caller.Result(f.length() != 0L)
+            handle.post {
+                create()
+                caller.Result(f.length() != 0L)
            }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -121,7 +125,10 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     }
     fun dbinit(stream: InputStream):Boolean {
         try {
-            close()
+            var colsesucess=false
+            handle.post {close()
+                colsesucess=true}
+            while (!colsesucess){}
             val DB_PATH = context.getDatabasePath(DB_NAME)
             if(DB_PATH.exists()){
                 DB_PATH.delete()
@@ -150,7 +157,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             } else {
                 Log.d("path", "file doesn't exist or is not a file")
             }
-            create()
+            handle.post { create() }
             return f.length() != 0L
         } catch (e: Exception) {
             e.printStackTrace()
