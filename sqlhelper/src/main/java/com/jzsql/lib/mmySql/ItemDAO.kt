@@ -19,6 +19,9 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     //資料庫物件
     lateinit var dbHelper: DatabaseHelper
     lateinit var db: SQLiteDatabase
+    init {
+        create()
+    }
     fun create(): ItemDAO {
         dbHelper = DatabaseHelper(context, DB_NAME)
         dbHelper.openDataBase()
@@ -79,6 +82,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
 
     fun dbinit(caller: InitCaller, stream: InputStream) {
         try {
+            close()
             val DB_PATH = context.getDatabasePath(DB_NAME)
             if(DB_PATH.exists()){
                 DB_PATH.delete()
@@ -107,7 +111,9 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             } else {
                 Log.d("path", "file doesn't exist or is not a file")
             }
-            handle.post { caller.Result(f.length() != 0L) }
+            create()
+            handle.post { caller.Result(f.length() != 0L)
+           }
         } catch (e: Exception) {
             e.printStackTrace()
             handle.post { caller.Result(false) }
@@ -115,6 +121,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     }
     fun dbinit(stream: InputStream):Boolean {
         try {
+            close()
             val DB_PATH = context.getDatabasePath(DB_NAME)
             if(DB_PATH.exists()){
                 DB_PATH.delete()
@@ -143,6 +150,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
             } else {
                 Log.d("path", "file doesn't exist or is not a file")
             }
+            create()
             return f.length() != 0L
         } catch (e: Exception) {
             e.printStackTrace()
