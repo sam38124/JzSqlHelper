@@ -1,6 +1,5 @@
 package com.jzsql.lib.mmySql;
 
-import android.app.Activity
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.os.Handler
@@ -10,7 +9,7 @@ import java.io.FileOutputStream
 import java.io.InputStream
 import java.net.URL
 
-class ItemDAO(var context: Context, var DB_NAME: String) {
+class JzSqlHelper(var context: Context, var DB_NAME: String) {
     companion object {
         val TAG = "ItemDAO"
 
@@ -22,7 +21,7 @@ class ItemDAO(var context: Context, var DB_NAME: String) {
     init {
         create()
     }
-    fun create(): ItemDAO {
+    fun create(): JzSqlHelper {
         dbHelper = DatabaseHelper(context, DB_NAME)
         dbHelper.openDataBase()
         db = dbHelper.db

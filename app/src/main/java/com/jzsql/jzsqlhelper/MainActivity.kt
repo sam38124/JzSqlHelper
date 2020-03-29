@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.TextView
-import com.jzsql.lib.mmySql.InitCaller
-import com.jzsql.lib.mmySql.ItemDAO
+import com.jzsql.lib.mmySql.JzSqlHelper
 import com.jzsql.lib.mmySql.Sql_Result
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         /*method1*/
         //第一步創建資料庫
-        val item = ItemDAO(this, "test.db").create()
+        val item = JzSqlHelper(this, "test.db").create()
         //第二步創建資料表
         item.exsql(
             "CREATE TABLE   IF NOT EXISTS logtable (\n" +
