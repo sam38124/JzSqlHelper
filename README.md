@@ -37,7 +37,7 @@ implementation 'com.github.sam38124:JzSqlHelper:6.8'
 第一步創建資料庫
 
 ```kotlin
- val item= ItemDAO(this,"test.db")
+ val item= JzSqlHelper(this,"test.db")
 ```
 第二步開始使用
 ```kotlin
@@ -72,7 +72,7 @@ implementation 'com.github.sam38124:JzSqlHelper:6.8'
 <a name="Assetsdb"></a>
 ### 預載Assets資料庫
 ```kotlin
- val item = ItemDAO(this, "test.db")
+ val item = JzSqlHelper(this, "test.db")
 
         item.init_ByAsset("test.db", InitCaller {
         if (it) {
@@ -85,7 +85,7 @@ implementation 'com.github.sam38124:JzSqlHelper:6.8'
 <a name="Urldb"></a>
 ### 預載網路資料庫
 ```kotlin
- val item = ItemDAO(this, "gg.db")
+ val item = JzSqlHelper(this, "gg.db")
 
   item.init_ByUrl( "https://sampleurl/sample.db",InitCaller {
                if (it) {
